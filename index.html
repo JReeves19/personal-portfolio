@@ -9,13 +9,25 @@
 <body>
     <nav class="my-nav">
         <div class="nav-logo">
-            <a href="#home">JR</a>
+            <a href="#hero">JR</a>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="primary-navigation"
+            aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="primary-navigation">
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="experience">Experience</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
             <li>
                 <a href="assets/General Resume.pdf" class="resume-btn" target="_blank">Resume</a>
@@ -83,25 +95,34 @@
 
             <!-- Sub-section: Beyond the Classroom -->
              <div class="beyond-classroom">
-                <h3>Beyond the classroom</h3>
+                <h3>Beyond the Classroom</h3>
 
                 <div class="beyond-grid">
                     <div class="beyond-card">
-                        <h4>Leadership & Involvement</h4>
-                        <ul>
-                            <li><strong>ACM Chapter</strong> - Active Member</li>
-                            <li><strong>Computer Science Society</strong> - Member</li>
+                        <h4>Leadership &amp; Involvement</h4>
+
+                        <ul class="involvement-list">
+                            <li>
+                                <span class="membership-icon">♜</span>
+                                ACM Chapter — Active Member
+                            </li>
+                            <li>
+                                <span class="membership-icon">✹</span>
+                                Computer Science Society — Member
+                            </li>
                         </ul>
                     </div>
 
                     <div class="beyond-card">
                         <h4>Interests</h4>
                         <p>
-                            Outside of software development and coursework, I enjoy financial market analysis, backtesting trading strategies, exploring open-source tools, and participating in tech communities.
+                            Outside of software development and coursework, I enjoy financial
+                            market analysis, backtesting trading strategies, exploring
+                            open-source tools, and participating in tech communities.
                         </p>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </section>
 
@@ -118,7 +139,7 @@
                     Designed and developed a modern, responsive personal portfolio to showcase software projects, technical background, and experience with a recruiter-friendly layout.
                 </p>
                 <div class="project-tech">
-                    <span>Tech:</span> HTML CSS, GitHub Pages
+                    <span>Tech:</span> HTML, CSS, GitHub Pages
                 </div>
             </div>
 
@@ -211,5 +232,23 @@
                     </a>
                 </div>
     </section>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        const navItems = document.querySelectorAll(".nav-links a");
+
+        menuToggle.addEventListener("click",() => {
+            const isOpen = navLinks.classList.toggle("is-open");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+        });
+
+        navItems.forEach((link) => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("is-open");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
 </body>
 </html>
